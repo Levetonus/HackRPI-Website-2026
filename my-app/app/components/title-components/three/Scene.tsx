@@ -13,7 +13,7 @@ useGLTF.preload(RPI_URL);
 useGLTF.preload(PLANE_URL);
 
 const scrollMultiplier = 1;
-const endingMargin = 450;
+const endingMargin = 150;
 export const PlanePivots: CameraPivot[] = [
 	{ position: [0, 0, 0], rotation: [0, 0, 0], fov: 50, scrollPosition: 0 },
 	{ position: [0, 0, 0], rotation: [-0.15, 0, 0], fov: 50, scrollPosition: 300*scrollMultiplier },
