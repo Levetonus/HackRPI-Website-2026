@@ -239,19 +239,38 @@ export function Variation3({ show }: { show: boolean }) {
             {/* Left Half Container */}
             <div className="flex flex-col justify-center items-start pl-16 md:pl-24 max-w-2xl">
                 <span className="text-sm uppercase tracking-[0.3em] font-semibold mb-2 opacity-70">
-                    Something Big Is Coming
+                    RPI Game Dev Club Presents
                 </span>
 
                 <h1 className={`${textSize} font-black leading-[0.9] tracking-tighter uppercase mb-6`}>
-                    Next <br />
-                    Chapter
+                    Eat Eat <br/>
+                    Cloud Cloud
                 </h1>
 
                 <p className="text-lg font-light opacity-80 max-w-md leading-relaxed">
-                    We are crafting an entirely new experience. Mark your calendar for what comes next.
+                    Enjoy a custom game made by RPI's very own Game Development Club
                 </p>
+                <p className="text-lg font-light opacity-80 max-w-md leading-relaxed">
+                    Be a cloud, Eating clouds, In The Clouds
+                </p>
+                
+                <div  className="py-2"/>
+            <Link
+                href="./game"
+                className={`border border-yellow-100 px-6 py-3 font-mono font-bold text-yellow-100 text-m md:text-m uppercase tracking-widest hover:bg-yellow-100 hover:text-black transition-colors ${
+                    show ? "pointer-events-auto" : "pointer-events-none"
+                }`}
+                style={{
+                    boxShadow: "0 0 15px rgba(254,252,232,0.15)",
+                    
+                }}
+                target="_blank"
+            >
+                Play Here
+            </Link>
             </div>
 
+            
             {/* Right Half */}
             <div aria-hidden="true" />
         </div>
