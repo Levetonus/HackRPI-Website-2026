@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import Prizes from './prizes';
 import BackgroundColor from '../components/BGColor';
 
-const BACKGROUND = "#7D8793";
+const BACKGROUND = "#00152b";
 const YELLOW_BRIGHT = "#FEF9C2";
 const DARK_GREY = "#d9d9d9";
 const LIGHT_YELLOW = "#CECAB8";

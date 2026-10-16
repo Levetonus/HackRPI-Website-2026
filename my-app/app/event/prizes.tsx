@@ -18,7 +18,7 @@ interface StandardPrize {
 }
 
 const FONT_COLOR = "#d9d9d9"
-const BACKGROUND = "#7D8793"
+const BACKGROUND = "#00152b"
 
 const topPrizes: TopPrize[] = [
   {

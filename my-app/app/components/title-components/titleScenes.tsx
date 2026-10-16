@@ -95,7 +95,7 @@ export function Variation1({ show }: { show: boolean }) {
                         <span className="text-s md:text-sm font-mono uppercase tracking-[0.25em] opacity-50 block">
                             02 // OVERVIEW
                         </span>
-                        <p className="text-l md:text-xl font-mono opacity-80 leading-relaxed">
+                        <p className="text-[1.05rem] md:text-[1.05rem] font-mono opacity-80 leading-relaxed">
                             Join us for 24 hours of creation, learning, and innovation at Rensselaer Polytechnic Institute. Build extraordinary projects alongside passionate student creators.
                         </p>
                     </div>
@@ -111,7 +111,7 @@ export function Variation1({ show }: { show: boolean }) {
                         <span className="text-s md:text-sm font-mono uppercase tracking-[0.25em] opacity-50 block">
                             03 // FEATURED TRACKS
                         </span>
-                        <ul className="text-l md:text-xl font-mono space-y-1.5 opacity-85">
+                        <ul className="text-[1.05rem] md:text-[1.05rem] font-mono space-y-1.5 opacity-85">
                             <li className="flex items-center gap-2">
                                 <span className="text-yellow-100">✦</span> AI & Machine Learning
                             </li>
@@ -127,7 +127,7 @@ export function Variation1({ show }: { show: boolean }) {
                         </ul>
                     </div>
 
-                    <span className="text-l md:text-xl font-mono text-yellow-100/80 uppercase tracking-widest">
+                    <span className="text-[1.05rem] md:text-[1.05rem] font-mono text-yellow-100/80 uppercase tracking-widest">
                         $10K+ PRIZE POOL
                     </span>
                 </div>
