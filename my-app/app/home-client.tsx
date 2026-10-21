@@ -3,9 +3,7 @@
 import NavBar from "@/app/components/nav-bar/nav-bar";
 import Footer from "@/app/components/footer/footer";
 import TitleComponent from "@/app/components/title-components/title";
-import Buffer from "@/app/components/themed-components/buffer"
-import AboutUs from "@/app/components/about-us/about-us";
-import FAQPage from "@/app/components/faq/faq";
+import FAQPage from "@/app/components/faq/faqpage";
 import Sponsors from "@/app/components/sponsors/sponsors";
 import TeamComponent from "@/app/components/team/team";
 import Mentions from "@/app/components/team/mentions";
@@ -16,6 +14,7 @@ import { ReactNode, useEffect, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { textAnimation } from "@/lib/text-animation";
+import { FooterEllipseColor, FooterColor } from "@/app/components/BGColor";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,7 +25,12 @@ export default function HomeClient() {
   // Initialize client flag
   useEffect(() => {
     setIsClient(true);
-    setNavbar(<NavBar showOnScroll={true} variant={1}/>);
+    setNavbar(<NavBar showOnScroll={false} variant={2}/>);
+  }, []);
+
+  useEffect(() => {
+    if ('scrollRestoration' in window.history) window.history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
   }, []);
 
   // Setup Lenis and GSAP animations
@@ -57,16 +61,16 @@ export default function HomeClient() {
 
         // animate speech text
         ScrollTrigger.create({
-          trigger: "#winner-animate",
-          start: "top bottom",
-          end: () => "+=" + scrollWidth,
-          onEnter: () => {
-            let HA2 = false;
-            if (!HA2) {
-              textAnimation("winner-animate", 1.5, 0.05);
-              HA2 = true;
-            }
-          },
+           trigger: "#winner-animate",
+           start: "top bottom",
+           end: () => "+=" + scrollWidth,
+           onEnter: () => {
+             let HA2 = false;
+             if (!HA2) {
+               textAnimation("winner-animate", 1.5, 0.05);
+               HA2 = true;
+             }
+         },
         });
 
         // animate effect in footer
@@ -87,43 +91,6 @@ export default function HomeClient() {
           );
         }
 
-        // switch navbar styling
-        ScrollTrigger.create({
-          trigger: "#switch-light",
-          start: "top top",
-          end: "bottom top",
-          onEnter: () => {
-            setNavbar(<NavBar showOnScroll={true}/>);
-          },
-          onEnterBack: () => {
-            setNavbar(<NavBar showOnScroll={true}/>);
-          },
-          onLeave: () => {
-            setNavbar(<NavBar showOnScroll={true} variant={1}/>);
-          },
-          onLeaveBack: () => {
-            setNavbar(<NavBar showOnScroll={true} variant={1}/>);
-          }
-        });
-
-        ScrollTrigger.create({
-          trigger: "#switch-light-2",
-          start: "top top",
-          end: "bottom top",
-          onEnter: () => {
-            setNavbar(<NavBar showOnScroll={true}/>);
-          },
-          onEnterBack: () => {
-            setNavbar(<NavBar showOnScroll={true}/>);
-          },
-          onLeave: () => {
-            setNavbar(<NavBar showOnScroll={true} variant={1}/>);
-          },
-          onLeaveBack: () => {
-            setNavbar(<NavBar showOnScroll={true} variant={1}/>);
-          }
-        });
-
         return () => {
           ScrollTrigger.killAll();
           lenis.destroy();
@@ -137,30 +104,41 @@ export default function HomeClient() {
   }, [isClient]);
 
   return (
-    <>
-      {isClient && Navbar}
-      <div className="w-full overflow-hidden">
-        <TitleComponent
-          onReady={(variant) => {
-            // Runs once the chosen title variant is mounted/rendered
-            textAnimation("title-animate", 0.9, 0.0, 0);
-            textAnimation("links-animate", 0.5, 0.0, 0);
-          }}
-        />
-        <AboutUs />
-        <div id="switch-light">
-          <FAQPage />
-          <Buffer fillColor="#5f6b7a"/>
-          <Sponsors />
+    <div className = "overflow-y-scroll scrollbar-hide">
+        {isClient && Navbar}
+        <div className="w-full overflow-hidden">
+          <TitleComponent/>
+          
+          {/* <TitleComponent
+            onReady={(variant) => {
+              // Runs once the chosen title variant is mounted/rendered
+              textAnimation("title-animate", 0.9, 0.0, 0);
+              textAnimation("links-animate", 0.5, 0.0, 0);
+            }}
+          /> */}
+          {/*<AboutUs />
+          <div id="switch-light">
+            <FAQPage />
+            <Buffer fillColor="#5f6b7a"/>*/}
+
+
+            
+            <div className="z-10 relative">
+              <FAQPage />
+              <Sponsors />
+            </div>
+            <div className="relative">
+              <TeamComponent />
+            </div>
+            <div className="z-10 relative">
+              <Mentions />
+              <footer id="switch-light-2" style={{backgroundColor: FooterColor}}>
+                <div className="w-full h-[10vh] bg-gBlack" style={{ clipPath: "ellipse(70% 0% at 50% 0%)", backgroundColor: FooterEllipseColor }} id="footer-ellipse"></div>
+                <FinalMessage/>
+                <Footer />
+              </footer> 
+            </div>
         </div>
-        <TeamComponent />
-        <Mentions />
-        <footer id="switch-light-2" className="bg-white">
-          <div className="w-full h-[10vh] bg-gBlack" style={{ clipPath: "ellipse(70% 0% at 50% 0%)", backgroundColor: "#111112" }} id="footer-ellipse"></div>
-          <FinalMessage/>
-          <Footer />
-        </footer>
       </div>
-    </>
   );
 }
